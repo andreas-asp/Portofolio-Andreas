@@ -13,5 +13,9 @@
   "type": "commonjs",
   "dependencies": {
     "tailwindcss": "^3.4.19"
+  },
+  "devDependencies": {
+    "prettier": "^3.8.0",
+    "prettier-plugin-tailwindcss": "^0.7.2"
   }
 }

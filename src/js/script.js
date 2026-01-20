@@ -1,12 +1,17 @@
 // Navbar Fixed
 window.onscroll = function () {
   const header = document.querySelector("header");
+  const toTop = document.querySelector("#to-top");
   const fixedNav = header.offsetTop;
 
   if (window.pageYOffset > fixedNav) {
     header.classList.add("navbar-fixed");
+    toTop.classList.add("flex");
+    toTop.classList.remove("hidden");
   } else {
     header.classList.remove("navbar-fixed");
+    toTop.classList.remove("flex");
+    toTop.classList.add("hidden");
   }
 };
 
@@ -18,3 +23,45 @@ hamburger.addEventListener("click", function () {
   hamburger.classList.toggle("hamburger-active");
   navmenu.classList.toggle("hidden");
 });
+
+// Klik di luar Hamburger
+window.addEventListener("click", function (e) {
+  if (e.target != hamburger && e.target != navmenu) {
+    hamburger.classList.remove("hamburger-active");
+    navmenu.classList.add("hidden");
+  }
+});
+
+//Darkmode toogle
+const darkToggle = document.querySelector("#dark-toggle");
+const html = document.querySelector("html");
+const colorToggle = document.querySelector("#circle-toggle");
+
+darkToggle.addEventListener("click", function () {
+  if (darkToggle.checked) {
+    html.classList.add("dark");
+    colorToggle.classList.remove("bg-slate-500");
+    colorToggle.classList.add("bg-emerald-500");
+    localStorage.theme = "dark";
+  } else {
+    html.classList.remove("dark");
+    colorToggle.classList.remove("bg-emerald-500");
+    colorToggle.classList.add("bg-slate-500");
+    localStorage.theme = "light";
+  }
+});
+
+//Move Toogle = Theme
+if (
+  localStorage.theme === "dark" ||
+  (!("theme" in localStorage) &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches)
+) {
+  darkToggle.checked = true;
+  colorToggle.classList.remove("bg-slate-500");
+  colorToggle.classList.add("bg-emerald-500");
+} else {
+  darkToggle.checked = false;
+  colorToggle.classList.remove("bg-emerald-500");
+  colorToggle.classList.add("bg-slate-500");
+}

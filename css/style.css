@@ -731,6 +731,10 @@ video {
   margin-top: 0.5rem;
 }
 
+.mt-3 {
+  margin-top: 0.75rem;
+}
+
 .mt-4 {
   margin-top: 1rem;
 }
@@ -1464,10 +1468,6 @@ body {
 
   .md\:-mr-96 {
     margin-right: -24rem;
-  }
-
-  .md\:mt-3 {
-    margin-top: 0.75rem;
   }
 
   .md\:h-\[450px\] {
